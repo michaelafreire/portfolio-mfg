@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  organization: MyString
+  country: MyString
+  year: 1
+  filter_one: MyString
+  filter_two: MyString
+  filter_three: MyString
+  filter_four: MyString
+  toolkit: MyString
+  context: MyString
+  hmw: MyString
+  process: MyString
+  outcome: MyString
+  role: MyString
+  credits: MyString
+
+two:
+  title: MyString
+  organization: MyString
+  country: MyString
+  year: 1
+  filter_one: MyString
+  filter_two: MyString
+  filter_three: MyString
+  filter_four: MyString
+  toolkit: MyString
+  context: MyString
+  hmw: MyString
+  process: MyString
+  outcome: MyString
+  role: MyString
+  credits: MyString

@@ -1,15 +1,17 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require "open-uri"
 
+# Emptying db
 Project.destroy_all
 
+# Importing images and videos for problem
+file1 = URI.open("https://res.cloudinary.com/dzermzlbl/image/upload/v1712266720/ITS_-_PROBLEM_zvarml.png")
+file4 = URI.open("https://res.cloudinary.com/dzermzlbl/image/upload/v1712266719/VIVID_BRANDS_-_PROBLEM_sd6hjx.png")
+file7 = URI.open("https://res.cloudinary.com/dzermzlbl/image/upload/v1712266702/BEST_VET_-_PROBLEM_yigapm.png")
+file10 = URI.open("https://res.cloudinary.com/dzermzlbl/image/upload/v1712266704/CHILDCARE_2_gm6181.png")
+file13 = URI.open("https://res.cloudinary.com/dzermzlbl/image/upload/v1712266714/EP_2_ijl72x.png")
+file16 = URI.open("https://res.cloudinary.com/dzermzlbl/image/upload/v1712266707/ANDEALPA_-_PROBLEM_bgzsvy.png")
+
+# Creating projects
 its = Project.new(
   title: "Boosting Education in Peru: Upskilling Teachers through an Online Learning Platform",
   organization: "Innova Teaching School - Intercorp" ,
@@ -27,6 +29,7 @@ its = Project.new(
   role: "Product Owner, User Researcher, Product Designer",
   credits: "Multidisciplinary Team: Andrea Portugal, Massiel Arregui, Diana Zapata, Claudia Zegarra, Mary Vega, Giuliana Espinosa, Walter Condor"
 )
+its.photo.attach(io: file1, filename: "its-problem.png", content_type: "image/png")
 its.save!
 
 vivid_brands = Project.new(
@@ -46,6 +49,7 @@ vivid_brands = Project.new(
   role: "Design Researcher, Product Design"
   # credits: "."
 )
+vivid_brands.photo.attach(io: file4, filename: "vivid-brands-problem.png", content_type: "image/png")
 vivid_brands.save!
 
 best_vet = Project.new(
@@ -65,6 +69,7 @@ best_vet = Project.new(
   role: "Full Stack Developer",
   credits: "Boots Britton (Full Stack Developer), Laurentiu Cristian Manolache (Full Stack Developer) and Fernanda Borges Ferreira (Full Stack Developer)"
 )
+best_vet.photo.attach(io: file7, filename: "best-vet-problem.png", content_type: "image/png")
 best_vet.save!
 
 childcare = Project.new(
@@ -84,6 +89,7 @@ childcare = Project.new(
   role: "Delivery Manager",
   credits: "Heather Bramwell (User Researcher), Sam Whitaker (Policy Designer) and Nishant Pandit (Business Analyst)"
 )
+childcare.photo.attach(io: file10, filename: "childcare-problem.png", content_type: "image/png")
 childcare.save!
 
 ep = Project.new(
@@ -103,6 +109,7 @@ ep = Project.new(
   role: "Delivery Manager",
   credits: "Heather Bramwell (User Researcher), Latifa Mahdi (User Researcher), Sam Whitaker (Policy Designer) and Nishant Pandit (Business Analyst)"
 )
+ep.photo.attach(io: file13, filename: "ep-problem.png", content_type: "image/png")
 ep.save!
 
 andealpa = Project.new(
@@ -122,4 +129,95 @@ andealpa = Project.new(
   role: "Design Researcher",
   credits: "Gonzalo Pedraza and Roberto Torres (Co-founders)"
 )
+andealpa.photo.attach(io: file16, filename: "andealpa-problem.png", content_type: "image/png")
 andealpa.save!
+
+# Importing images and videos for part
+file2 = URI.open("https://res.cloudinary.com/dzermzlbl/image/upload/v1712266700/ITS_-_PROCESS_hshdgr.png")
+file5 = URI.open("https://res.cloudinary.com/dzermzlbl/image/upload/v1712266715/VIVID_BRANDS_-_PROCESS_e7fqyp.png")
+file8 = URI.open("https://res.cloudinary.com/dzermzlbl/image/upload/v1712266703/BEST_VET_-_PROCESS_csutvq.png")
+file11 = URI.open("https://res.cloudinary.com/dzermzlbl/image/upload/v1712266712/CHILDCARE_1_g4ryby.png")
+file14 = URI.open("https://res.cloudinary.com/dzermzlbl/image/upload/v1712266710/EP_1_ey6bwe.png")
+file17 = URI.open("https://res.cloudinary.com/dzermzlbl/image/upload/v1712266698/ANDEALPA_-_PROCESS_apq76c.png")
+
+# Creating parts
+its_part = Part.new(
+  project: Project.find_by(title: "Boosting Education in Peru: Upskilling Teachers through an Online Learning Platform"),
+)
+its_part.photo.attach(io: file2, filename: "its-process.png", content_type: "image/png")
+its_part.save!
+
+vivid_brands_part = Part.new(
+  project: Project.find_by(title: "Building a Brand Strategy and Web Structure for Vivid Brands, an Organization Linking Consumers with Brands that Matter"),
+)
+vivid_brands_part.photo.attach(io: file5, filename: "vivid-brands-process.png", content_type: "image/png")
+vivid_brands_part.save!
+
+best_vet_part = Part.new(
+  project: Project.find_by(title: "Best Vet: Facilitating High Quality Veterinary Care at Accessible Prices"),
+)
+best_vet_part.photo.attach(io: file8, filename: "best-vet-process.png", content_type: "image/png")
+best_vet_part.save!
+
+childcare_part = Part.new(
+  project: Project.find_by(title: "Providing Insight on the Decision - Making Process of Parents when Choosing Childcare"),
+)
+childcare_part.photo.attach(io: file11, filename: "childcare-process.png", content_type: "image/png")
+childcare_part.save!
+
+ep_part = Part.new(
+  project: Project.find_by(title: "Designing More Sustainable Educational Psychology (EP) Services"),
+)
+ep_part.photo.attach(io: file14, filename: "ep-process.png", content_type: "image/png")
+ep_part.save!
+
+andealpa_part = Part.new(
+  project: Project.find_by(title: "Designing a Brand Strategy for an Organization Dedicated to Protecting the Andes"),
+)
+andealpa_part.photo.attach(io: file17, filename: "andealpa-process.png", content_type: "image/png")
+andealpa_part.save!
+
+# Importing images and videos for outcomes
+file3 = URI.open("https://res.cloudinary.com/dzermzlbl/video/upload/v1712266713/ITS_-_OUTCOME_tzixxy.mp4")
+file6 = URI.open("https://res.cloudinary.com/dzermzlbl/image/upload/v1712266718/VIVID_BRANDS_-_OUTCOME_riir6g.png")
+file9 = URI.open("https://res.cloudinary.com/dzermzlbl/video/upload/v1712266722/BEST_VET_-_OUTCOME_e5ofii.mp4")
+file12 = URI.open("https://res.cloudinary.com/dzermzlbl/image/upload/v1712266705/CHILDCARE_3_u6x2fx.png")
+file15 = URI.open("https://res.cloudinary.com/dzermzlbl/image/upload/v1712266716/EP_3_i9gk3s.png")
+file18 = URI.open("https://res.cloudinary.com/dzermzlbl/image/upload/v1712266703/ANDEALPA_-_OUTCOME_xtaev1.png")
+
+# Creating outcomes
+its_outcome = Outcome.new(
+  project: Project.find_by(title: "Boosting Education in Peru: Upskilling Teachers through an Online Learning Platform"),
+)
+its_outcome.video.attach(io: file3, filename: "its-outcome.png", content_type: "video/mp4")
+its_outcome.save!
+
+vivid_brands_outcome = Outcome.new(
+  project: Project.find_by(title: "Building a Brand Strategy and Web Structure for Vivid Brands, an Organization Linking Consumers with Brands that Matter"),
+)
+vivid_brands_outcome.photo.attach(io: file6, filename: "vivid-brands-outcome.png", content_type: "image/png")
+vivid_brands_outcome.save!
+
+best_vet_outcome = Outcome.new(
+  project: Project.find_by(title: "Best Vet: Facilitating High Quality Veterinary Care at Accessible Prices"),
+)
+best_vet_outcome.video.attach(io: file9, filename: "best-vet-outcome.png", content_type: "video/mp4")
+best_vet_outcome.save!
+
+childcare_outcome = Outcome.new(
+  project: Project.find_by(title: "Providing Insight on the Decision - Making Process of Parents when Choosing Childcare"),
+)
+childcare_outcome.photo.attach(io: file12, filename: "childcare-outcome.png", content_type: "image/png")
+childcare_outcome.save!
+
+ep_outcome = Outcome.new(
+  project: Project.find_by(title: "Designing More Sustainable Educational Psychology (EP) Services"),
+)
+ep_outcome.photo.attach(io: file15, filename: "ep-outcome.png", content_type: "image/png")
+ep_outcome.save!
+
+andealpa_outcome = Outcome.new(
+  project: Project.find_by(title: "Designing a Brand Strategy for an Organization Dedicated to Protecting the Andes"),
+)
+andealpa_outcome.photo.attach(io: file18, filename: "andealpa-outcome.png", content_type: "image/png")
+andealpa_outcome.save!

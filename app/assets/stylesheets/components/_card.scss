@@ -1,0 +1,55 @@
+.home-card{
+  background-color: #201a1ad5;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+    .home-name{
+    display:flex;
+    justify-content: center;
+    color: $white;
+    padding-top: 80px;
+  }
+  .home-intro{
+    display:flex;
+    justify-content: center;
+    color: $white;
+    margin-right: 35px;
+    margin-left: 35px;
+    margin-top: 20px;
+    margin-bottom: 35px;
+    text-align: center;
+    font-size: 18px;
+  }
+  .home-btn{
+    display:flex;
+    justify-content: center;
+    padding-bottom: 80px;
+  }
+  .see-work-btn:hover{
+    background-color: $black;
+    color: $white;
+    border: $black;
+  }
+}
+
+.outer-home{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center
+}
+
+.background-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.highlight-word{
+  color: $yellow;
+}

@@ -1,2 +1,22 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="outer-home">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-6">
+        <div class="home-card">
+          <div class="home-name">
+            <h2>Michaela Freire</h2>
+          </div>
+          <div class="home-intro">
+            <p>I'm a <strong>sociologist</strong>, <strong>designer</strong> and <strong>junior full stack developer</strong> on a mission to <strong>bridge disciplinary boundaries</strong> in order to <strong>understand</strong>, <strong>develop</strong> and <strong>build</strong> solutions for the <strong>complex social</strong> and <strong>environmental</strong> issues of the 21st century.</p>
+          </div>
+          <div class="home-btn">
+            <%= link_to 'See work', projects_path, class: 'btn btn-info see-work-btn' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <video class="background-video" autoplay loop muted poster="public/video/BACKGROUND VIDEO STATIC.png">
+    <source src="/video/3141208-hd_1920_1080_25fps.mp4" type="video/mp4">
+  </video>
+</div>

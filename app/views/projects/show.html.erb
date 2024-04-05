@@ -1,1 +1,46 @@
 <%= @project.title %>
+<% if @project.photo.attached? %>
+  <%= cl_image_tag @project.photo.key, height: 405, width: 720 %>
+<% elsif @project.video.attached? %>
+  <%= cl_video_tag @project.video.key,
+    height: 405,
+    width: 720,
+    crop: :fill,
+    format: :mp4,
+    controls: true,
+    autoplay: true,
+    loop: true,
+    muted: true %>
+<% end %>
+
+<% @project.parts.each do |part| %>
+  <% if part.photo.attached? %>
+    <%= cl_image_tag part.photo.key, height: 405, width: 720 %>
+  <% elsif part.video.attached? %>
+    <%= cl_video_tag outcome.video.key,
+      height: 405,
+      width: 720,
+      crop: :fill,
+      format: :mp4,
+      controls: true,
+      autoplay: true,
+      loop: true,
+      muted: true %>
+  <% end %>
+<% end %>
+
+<% @project.outcomes.each do |outcome| %>
+  <% if outcome.photo.attached? %>
+    <%= cl_image_tag outcome.photo.key, height: 405, width: 720 %>
+  <% elsif outcome.video.attached? %>
+    <%= cl_video_tag outcome.video.key,
+      height: 405,
+      width: 720,
+      crop: :fill,
+      format: :mp4,
+      controls: true,
+      autoplay: true,
+      loop: true,
+      muted: true %>
+  <% end %>
+<% end %>

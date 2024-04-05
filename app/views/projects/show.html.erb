@@ -1,46 +1,68 @@
-<%= @project.title %>
-<% if @project.photo.attached? %>
-  <%= cl_image_tag @project.photo.key, height: 405, width: 720 %>
-<% elsif @project.video.attached? %>
-  <%= cl_video_tag @project.video.key,
-    height: 405,
-    width: 720,
-    crop: :fill,
-    format: :mp4,
-    controls: true,
-    autoplay: true,
-    loop: true,
-    muted: true %>
-<% end %>
-
-<% @project.parts.each do |part| %>
-  <% if part.photo.attached? %>
-    <%= cl_image_tag part.photo.key, height: 405, width: 720 %>
-  <% elsif part.video.attached? %>
-    <%= cl_video_tag outcome.video.key,
-      height: 405,
-      width: 720,
-      crop: :fill,
-      format: :mp4,
-      controls: true,
-      autoplay: true,
-      loop: true,
-      muted: true %>
-  <% end %>
-<% end %>
-
-<% @project.outcomes.each do |outcome| %>
-  <% if outcome.photo.attached? %>
-    <%= cl_image_tag outcome.photo.key, height: 405, width: 720 %>
-  <% elsif outcome.video.attached? %>
-    <%= cl_video_tag outcome.video.key,
-      height: 405,
-      width: 720,
-      crop: :fill,
-      format: :mp4,
-      controls: true,
-      autoplay: true,
-      loop: true,
-      muted: true %>
-  <% end %>
-<% end %>
+<div class="container">
+    <h2 class="show-title"><%= @project.title %></h2>
+    <div class="key-information">
+      <p class="key-information-description"> <i class="fa-solid fa-building"></i> : <%= @project.organization %></p>
+      <p class="key-information-description"> <i class="fa-solid fa-location-dot"></i> : <%= @project.country %></p>
+      <p class="key-information-description"> <i class="fa-solid fa-calendar-days"></i> : <%= @project.year %></p>
+      <% if @project.toolkit? %>
+        <p class="key-information-description"> <i class="fa-solid fa-briefcase"></i> : <%= @project.toolkit %></p>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="context col-12 col-lg-6">
+        <h3>Context</h3>
+        <p><%= @project.context %></p>
+      </div>
+      <div class="context-img col-12 col-lg-6">
+        <% if @project.photo.attached? %>
+          <%= cl_image_tag @project.photo.key, { class: 'img-show', height: 202.5, width: 360 } %>
+        <% end %>
+      </div>
+      <% if @project.hmw? %>
+        <div class="hmw col-12 col-lg-10 justify-content-center">
+          <h3><%= @project.hmw %></h3>
+        </div>
+      <% end %>
+      <div class="process col-12 col-lg-6">
+        <h3>Process</h3>
+        <p><%= @project.process %></p>
+      </div>
+      <% @project.parts.each do |part| %>
+        <% if part.photo.attached? %>
+          <div class="process-img col-12 col-lg-6">
+            <%= cl_image_tag part.photo.key, { class: 'img-show', height: 202.5, width: 360 } %>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="outcome col-12">
+        <h3>Outcome</h3>
+        <p><%= @project.outcome %></p>
+      </div>
+      <% @project.outcomes.each do |outcome| %>
+        <% if outcome.photo.attached? %>
+          <div class="outcome-img col-12 col-lg-8 justify-content-center">
+            <%= cl_image_tag outcome.photo.key, { class: 'img-show', height: 202.5, width: 360 } %>
+          </div>
+        <% elsif outcome.video.attached? %>
+          <div class="outcome-img col-12 col-lg-8 justify-content-center">
+            <%= cl_video_tag outcome.video.key, {
+              class: "img-show",
+              height: 405,
+              width: 720,
+              crop: :fill,
+              format: :mp4,
+              controls: true,
+              autoplay: true,
+              loop: true,
+              muted: true } %>
+          </div>
+        <% end %>
+      <% end %>
+      <div id="credits">
+        <p class="key-information-description">Role: <%= @project.role %></p>
+        <% if @project.credits? %>
+          <p class="key-information-description">Credits: <%= @project.credits %></p>
+        <% end %>
+      </div>
+  </div>
+</div>

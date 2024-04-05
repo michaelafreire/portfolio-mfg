@@ -1,1 +1,43 @@
-<%= @projects %>
+<div class="container">
+  <div class="index-text">
+    <h2 class="index-title main-title">My Work.</h2>
+    <p class="index-description">Throughout my career, I've effectively employed evidence-based, user-centered approaches to address complex challenges across various fields.</p>
+    <p class="index-description"> Explore my professional journey so far.</p>
+  </div>
+  <div class="row mt-3">
+    <% @projects.each do |project| %>
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <%= link_to project_path(project), class: "project-card-link" do %>
+          <div class="project-card">
+            <%= cl_image_tag project.photo.key, { class: 'img-card', height: 202.5, width: 360 } %>
+            <p class="index-name"><%= project.title %></p>
+            <div class="tags">
+              <div class="yellow-tags">
+                <% if project.filter_one? %>
+                  <div class="filter">
+                    <p id="filter-name"><%= project.filter_one%></p>
+                  </div>
+                <% end %>
+                <% if project.filter_two? %>
+                  <div class="filter">
+                    <p id="filter-name"><%= project.filter_two%></p>
+                  </div>
+                <% end %>
+                <% if project.filter_three? %>
+                  <div class="filter">
+                    <p id="filter-name"><%= project.filter_three%></p>
+                  </div>
+                <% end %>
+                <% if project.filter_four? %>
+                  <div class="filter">
+                    <p id="filter-name"><%= project.filter_four%></p>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -59,6 +59,7 @@
   border: 0.5px solid #c5c5c5;
   box-shadow: 0px 0px 3px #D2D5D9;
   min-height: 400px;
+  position: relative;
 }
 
 .img-card{
@@ -69,10 +70,14 @@
   border-top-right-radius: 10px;
 }
 
-.project-card-link{
-  text-decoration: none;
-}
-
 .my-toolkit{
   margin-top: 30px;
+}
+
+.see-more-btn{
+  color: rgb(99, 99, 93);
+  text-align: right;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
